@@ -1,12 +1,15 @@
 require('dotenv').config();
 const express = require('express');
 const nodemailer = require('nodemailer');
+const cors = require("cors");
 
 const app = express();
 const port = 4001;
 
 // Middleware para parsear el cuerpo de las solicitudes como JSON
 app.use(express.json());
+
+app.use(cors())
 
 app.post('/send-email', async (req, res) => {
   const { to, subject, text, html } = req.body;
@@ -25,7 +28,7 @@ app.post('/send-email', async (req, res) => {
   // Configura el correo electrónico
   let mailOptions = {
     from: process.env.SMTP_USER, // remitente
-    to: to, // destinatario
+    to: process.env.SMTP_USER, // destinatario
     subject: subject,
     text: text,
     html: html
