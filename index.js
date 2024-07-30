@@ -42,6 +42,12 @@ app.post('/send-email', async (req, res) => {
   }
 });
 
+app.get('/linkeding', async (req, res) => {
+  res.status(200).json({
+    message: 'Linkedin'
+  })
+})
+
 app.listen(port, () => {
   console.log(`Servidor escuchando en http://localhost:${port}`);
 });
