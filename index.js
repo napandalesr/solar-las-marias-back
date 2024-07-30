@@ -42,7 +42,7 @@ app.post('/send-email', async (req, res) => {
   }
 });
 
-app.get('/linkeding', async (req, res) => {
+app.get('/linkedin', async (req, res) => {
   res.status(200).json({
     message: 'Linkedin'
   })
