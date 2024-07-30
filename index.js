@@ -44,7 +44,8 @@ app.post('/send-email', async (req, res) => {
 
 app.get('/linkedin', async (req, res) => {
   res.status(200).json({
-    message: 'Linkedin'
+    message: 'Linkedin',
+    code: req.body.code
   })
 })
 
