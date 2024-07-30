@@ -85,5 +85,5 @@ const linkedingAuthorization = async (code, redirect_uri) => {
 }
 
 app.listen(port, () => {
-  console.log(`Servidor escuchando en http://localhost:${port}`);
+  console.log(`Servidor escuchando en ${port}`);
 });
