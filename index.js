@@ -61,7 +61,7 @@ const linkedingAuthorization = async (code, redirect_uri) => {
     const response =  await axios.post('https://www.linkedin.com/oauth/v2/accessToken', {}, {
       headers: {
         "Content-Type": 'application/x-www-form-urlencoded',
-        'grant_type': 'client_credentials',
+        'grant_type': 'authorization_code',
         "code": code,
         'client_id': process.env.client_id,
         'client_secret': process.env.client_secret,
