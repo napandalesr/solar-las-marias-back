@@ -1,10 +1,18 @@
 require('dotenv').config();
 const express = require('express');
+var bodyParser = require('body-parser')
 const nodemailer = require('nodemailer');
 const cors = require("cors");
 const axios = require('axios')
 
 const app = express();
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
+
 const port = 4001;
 
 // Middleware para parsear el cuerpo de las solicitudes como JSON
@@ -72,6 +80,7 @@ const linkedingAuthorization = async (code, redirect_uri) => {
   } catch (error) {
     return {error}
   }
+  console.log("ooooooooook");
   
 }
 
