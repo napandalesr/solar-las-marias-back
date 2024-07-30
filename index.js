@@ -49,7 +49,8 @@ app.get('/linkedin', async (req, res) => {
 
 const linkedingAuthorization = async (code, redirect_uri) => {
   try {
-    return await axios.post('https://www.linkedin.com/oauth/v2/accessToken', {
+    const response =  await axios.post('https://www.linkedin.com/oauth/v2/accessToken', {
+      'grant_type': 'authorization_code',
       'response_type': 'code',
       'client_id': process.env.client_id,
       'redirect_uri': redirect_uri,
@@ -64,6 +65,9 @@ const linkedingAuthorization = async (code, redirect_uri) => {
         'redirect_uri': redirect_uri
       }
     });
+
+    console.log("response", response);
+    return response;
     
   } catch (error) {
     return {error}
