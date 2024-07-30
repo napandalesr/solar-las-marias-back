@@ -48,23 +48,27 @@ app.get('/linkedin', async (req, res) => {
 });
 
 const linkedingAuthorization = async (code, redirect_uri) => {
-  const response = await axios.post('https://www.linkedin.com/oauth/v2/accessToken', {
-    'response_type': 'code',
-    'client_id': process.env.client_id,
-    'redirect_uri': redirect_uri,
-    'scope': 'w_member_social'
-  }, {
-    headers: {
-      "Content-Type": 'application/x-www-form-urlencoded',
-      'grant_type': 'authorization_code',
-      "code": code,
+  try {
+    return await axios.post('https://www.linkedin.com/oauth/v2/accessToken', {
+      'response_type': 'code',
       'client_id': process.env.client_id,
-      'client_secret': process.env.client_secret,
-      'redirect_uri': redirect_uri
-    }
-  });
-  console.log('response', response);
-  return response;
+      'redirect_uri': redirect_uri,
+      'scope': 'w_member_social'
+    }, {
+      headers: {
+        "Content-Type": 'application/x-www-form-urlencoded',
+        'grant_type': 'authorization_code',
+        "code": code,
+        'client_id': process.env.client_id,
+        'client_secret': process.env.client_secret,
+        'redirect_uri': redirect_uri
+      }
+    });
+    
+  } catch (error) {
+    return {error}
+  }
+  
 }
 
 app.listen(port, () => {
