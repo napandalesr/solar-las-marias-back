@@ -43,11 +43,26 @@ app.post('/send-email', async (req, res) => {
 });
 
 app.get('/linkedin', async (req, res) => {
-  res.status(200).json({
-    message: 'Linkedin',
-    code: req.body.code
-  })
-})
+  res.status(200).json(linkedingAuthorization(req.body.code, req.body.redirect_uri));
+});
+
+const linkedingAuthorization = async (code, redirect_uri) => {
+  return await axios.post('https://www.linkedin.com/oauth/v2/accessToken', {
+    'response_type': 'code',
+    'client_id': process.env.client_id,
+    'redirect_uri': redirect_uri,
+    'scope': 'w_member_social'
+  }, {
+    headers: {
+      "Content-Type": 'application/x-www-form-urlencoded',
+      'grant_type': 'authorization_code',
+      "code": code,
+      'client_id': process.env.client_id,
+      'client_secret': process.env.client_secret,
+      'redirect_uri': redirect_uri
+    }
+  });
+}
 
 app.listen(port, () => {
   console.log(`Servidor escuchando en http://localhost:${port}`);
