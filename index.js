@@ -66,7 +66,7 @@ const linkedingAuthorization = async (code, redirect_uri) => {
     }, {
       headers: {
         "Content-Type": 'application/x-www-form-urlencoded',
-        'grant_type': 'authorization_code',
+        'grant_type': 'client_credentials',
         "code": code,
         'client_id': process.env.client_id,
         'client_secret': process.env.client_secret,
