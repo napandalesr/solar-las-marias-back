@@ -52,7 +52,7 @@ app.post('/send-email', async (req, res) => {
 });
 
 app.get('/linkedin', async (req, res) => {
-  res.status(200).send(await linkedingAuthorization(req.body.code, req.body.redirect_uri));
+  res.json(await linkedingAuthorization(req.body.code, req.body.redirect_uri));
 });
 
 const linkedingAuthorization = async (code, redirect_uri) => {
