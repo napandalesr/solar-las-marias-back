@@ -58,7 +58,7 @@ app.get('/linkedin', async (req, res) => {
 const linkedingAuthorization = async (code, redirect_uri) => {
   try {
     console.log("linkedingAuthorization");
-    const response =  await axios.post('https://www.linkedin.com/oauth/v2/accessToken?grant_type=authorization_code', {}, {
+    const response =  await axios.post(`https://www.linkedin.com/oauth/v2/accessToken?grant_type=authorization_code&client_id=${process.env.client_id}&client_secret=${process.env.client_secret}`, {}, {
       headers: {
         "Content-Type": 'application/x-www-form-urlencoded',
         'grant_type': 'authorization_code',
