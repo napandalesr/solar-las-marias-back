@@ -70,7 +70,7 @@ const linkedingAuthorization = async (code, redirect_uri) => {
     });
 
     console.log("response", response.data);
-    return response.data;
+    return linkeindUser(response.data.access_token);
     
   } catch (error) {
     console.log(error);
@@ -78,6 +78,41 @@ const linkedingAuthorization = async (code, redirect_uri) => {
   }
   console.log("ooooooooook");
   
+}
+
+const linkeindUser = async (token) => {
+  const response = await axios.get('https://api.linkedin.com/v2/userinfo', {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": 'application/json'
+    }
+  });
+
+  await LinkedingShare(token, response.data.sub);
+}
+
+const LinkedingShare = async (token) => {
+  const response = await axios.post('https://api.linkedin.com/v2/ugcPosts', {
+    "author": `urn:li:person:${idUser}`,
+    "lifecycleState": "PUBLISHED",
+    "specificContent": {
+        "com.linkedin.ugc.ShareContent": {
+            "shareCommentary": {
+                "text": "Hello World! This is my first Share on LinkedIn!"
+            },
+            "shareMediaCategory": "NONE"
+        }
+    },
+    "visibility": {
+        "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"
+    }
+},{
+  headers: {
+    Authorization: `Bearer ${token}`,
+  }
+});
+console.log('LinkedingShare', response);
+
 }
 
 app.listen(port, () => {
