@@ -91,7 +91,7 @@ const linkeindUser = async (token) => {
   await LinkedingShare(token, response.data.sub);
 }
 
-const LinkedingShare = async (token) => {
+const LinkedingShare = async (token, idUser) => {
   const response = await axios.post('https://api.linkedin.com/v2/ugcPosts', {
     "author": `urn:li:person:${idUser}`,
     "lifecycleState": "PUBLISHED",
