@@ -69,8 +69,8 @@ const linkedingAuthorization = async (code, redirect_uri) => {
       }
     });
 
-    console.log("response", response);
-    return response;
+    console.log("response", response.data);
+    return response.data;
     
   } catch (error) {
     console.log(error);
