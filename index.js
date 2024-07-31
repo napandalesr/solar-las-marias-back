@@ -51,7 +51,7 @@ app.post('/send-email', async (req, res) => {
   }
 });
 
-app.get('/linkedin', async (req, res) => {
+app.post('/linkedin', async (req, res) => {
   res.json(await linkedingAuthorization(req.body.code, req.body.redirect_uri));
 });
 
