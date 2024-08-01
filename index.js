@@ -105,7 +105,19 @@ ${info.text}
             "shareCommentary": {
                 "text": text
             },
-            "shareMediaCategory": "NONE"
+            "shareMediaCategory": "ARTICLE",
+            "media": [
+                {
+                    "status": "READY",
+                    "description": {
+                        "text": info.article
+                    },
+                    "originalUrl": "https://lp-las-marias.vercel.app/eyJrZXkxIjoidmFsdWUxIiwia2V5MiI6MX0=",
+                    "title": {
+                        "text": info.title
+                    }
+                }
+            ]
         }
     },
     "visibility": {
