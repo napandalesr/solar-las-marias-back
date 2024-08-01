@@ -1,4 +1,4 @@
-export const BlogsData = [
+const BlogsData = [
   {
     index: 1,
     title: 'El Cauca avanza hacia la transición energética de la mano de mujeres y jóvenes como instaladores de sistemas fotovoltaicos',
@@ -32,3 +32,5 @@ export const BlogsData = [
         oportunidad para impulsar a miles de familias del Cauca.`
   }
 ]
+
+module.exports = BlogsData;
