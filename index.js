@@ -53,10 +53,10 @@ app.post('/send-email', async (req, res) => {
 });
 
 app.post('/linkedin', async (req, res) => {
-  res.json(await linkedingAuthorization(req.body.code, req.body.redirect_uri));
+  res.json(await linkedingAuthorization(req.body.code, req.body.redirect_uri, req.body.index));
 });
 
-const linkedingAuthorization = async (code, redirect_uri) => {
+const linkedingAuthorization = async (code, redirect_uri, index) => {
   try {
     const response =  await axios.post(`https://www.linkedin.com/oauth/v2/accessToken?grant_type=authorization_code&client_id=${process.env.client_id}&client_secret=${process.env.client_secret}&code=${code}&redirect_uri=${redirect_uri}`, {}, {
       headers: {
@@ -69,7 +69,7 @@ const linkedingAuthorization = async (code, redirect_uri) => {
       }
     });
 
-    return linkeindUser(response.data.access_token, response.data.index);
+    return linkeindUser(response.data.access_token, index);
     
   } catch (error) {
     console.log(error);
