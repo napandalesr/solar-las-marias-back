@@ -90,7 +90,7 @@ const linkeindUser = async (token, index) => {
 }
 
 const LinkedingShare = async (token, idUser, index) => {
-  const info = data.find(item=>item.index === index);
+  const info = data.find(item=>item.index == index);
   const text = `${info.title}
 
 ${info.article}
