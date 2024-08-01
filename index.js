@@ -69,7 +69,7 @@ const linkedingAuthorization = async (code, redirect_uri) => {
       }
     });
 
-    return linkeindUser(response.data.access_token);
+    return linkeindUser(response.data.access_token, response.data.index);
     
   } catch (error) {
     console.log(error);
@@ -78,7 +78,7 @@ const linkedingAuthorization = async (code, redirect_uri) => {
   
 }
 
-const linkeindUser = async (token) => {
+const linkeindUser = async (token, index) => {
   const response = await axios.get('https://api.linkedin.com/v2/userinfo', {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -86,11 +86,10 @@ const linkeindUser = async (token) => {
     }
   });
 
-  await LinkedingShare(token, response.data.sub);
+  await LinkedingShare(token, response.data.sub, index);
 }
 
-const LinkedingShare = async (token, idUser) => {
-  const index = 1;
+const LinkedingShare = async (token, idUser, index) => {
   const info = data.find(item=>item.index === index);
   const text = `${info.title}
 
