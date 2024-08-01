@@ -94,8 +94,9 @@ const LinkedingShare = async (token, idUser) => {
   const info = data.find(item=>item.index === index);
   const text = `${info.title}
 
-  ${info.article}
-  ${info.text}
+${info.article}
+
+${info.text}
   `;
   const response = await axios.post('https://api.linkedin.com/v2/ugcPosts', {
     "author": `urn:li:person:${idUser}`,

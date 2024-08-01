@@ -2,18 +2,12 @@ const BlogsData = [
   {
     index: 1,
     title: 'El Cauca avanza hacia la transición energética de la mano de mujeres y jóvenes como instaladores de sistemas fotovoltaicos',
-    article: `Se firmó el marco legal que permitirá a la Granja Solar Las Marías iniciar actividades del proyecto de energía solar más 
-    grande del suroccidente colombiano. Este ya cuenta con el aval oficial para empezar a capacitar a mujeres y jóvenes del Patía, Cauca, 
-    que harán parte de las operaciones como instaladores fotovoltaicos.`,
-    text: `La Granja Solar Las Marías  ya es una realidad. En un evento que reunió a inversores internacionales, delegados del 
-        gobierno nacional y regional, y líderes del proyecto, se selló de manera oficial la firma del documento que autoriza el inicio 
-        de las acciones de la ‘Fase I’, que darán apertura al funcionamiento de esta iniciativa que producirá 99.5 megavatios de energía 
-        renovable y limpia en el departamento del Cauca.
+    article: `Se firmó el marco legal que permitirá a la Granja Solar Las Marías iniciar actividades del proyecto de energía solar más grande del suroccidente colombiano. Este ya cuenta con el aval oficial para empezar a capacitar a mujeres y jóvenes del Patía, Cauca, que harán parte de las operaciones como instaladores fotovoltaicos.`,
+    text: `La Granja Solar Las Marías  ya es una realidad. En un evento que reunió a inversores internacionales, delegados del gobierno nacional y regional, y líderes del proyecto, se selló de manera oficial la firma del documento que autoriza el inicio de las acciones de la ‘Fase I’, que darán apertura al funcionamiento de esta iniciativa que producirá 99.5 megavatios de energía renovable y limpia en el departamento del Cauca.
 
-        El acto estuvo encabezado por la mesa principal, encargada de presentar 
-        ante el público todo lo relacionado con el proyecto, integrada por William Hernández, representante legal de Solar Las Marías S. A. S - E. S. P; 
-        alcaldesa de Bolívar, Cauca; Jorge Macías,  secretario de agricultura del departamento del Cauca; Beatriz Cobo,  subdirectora 
-        centro de la construcción SENA, Valle; Fabricio López, delegado del SENA, Cauca, y Elver Rengifo, delegado del Ministerio del Interior`
+  El acto estuvo encabezado por la mesa principal, encargada de presentar ante el público todo lo relacionado con el proyecto, integrada por William Hernández, representante legal de Solar Las Marías S. A. S - E. S. P; alcaldesa de Bolívar, Cauca; Jorge Macías,  secretario de agricultura del departamento del Cauca; Beatriz Cobo,  subdirectora centro de la construcción SENA, Valle; Fabricio López, delegado del SENA, Cauca, y Elver Rengifo, delegado del Ministerio del Interior
+  
+  https://lp-las-marias.vercel.app/eyJrZXkxIjoidmFsdWUxIiwia2V5MiI6MX0=`
   },
   {
     index: 2,
