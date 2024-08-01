@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const data = require('./masterData/blogs');
 var bodyParser = require('body-parser')
 const nodemailer = require('nodemailer');
 const cors = require("cors");
@@ -57,7 +58,6 @@ app.post('/linkedin', async (req, res) => {
 
 const linkedingAuthorization = async (code, redirect_uri) => {
   try {
-    console.log("linkedingAuthorization");
     const response =  await axios.post(`https://www.linkedin.com/oauth/v2/accessToken?grant_type=authorization_code&client_id=${process.env.client_id}&client_secret=${process.env.client_secret}&code=${code}&redirect_uri=${redirect_uri}`, {}, {
       headers: {
         "Content-Type": 'application/x-www-form-urlencoded',
@@ -69,14 +69,12 @@ const linkedingAuthorization = async (code, redirect_uri) => {
       }
     });
 
-    console.log("response", response.data);
     return linkeindUser(response.data.access_token);
     
   } catch (error) {
     console.log(error);
     return {error}
   }
-  console.log("ooooooooook");
   
 }
 
@@ -92,13 +90,20 @@ const linkeindUser = async (token) => {
 }
 
 const LinkedingShare = async (token, idUser) => {
+  const index = 1;
+  const info = data.find(item=>item.index === index);
+  const text = `${info.title}
+
+  ${info.article}
+  ${info.text}
+  `;
   const response = await axios.post('https://api.linkedin.com/v2/ugcPosts', {
     "author": `urn:li:person:${idUser}`,
     "lifecycleState": "PUBLISHED",
     "specificContent": {
         "com.linkedin.ugc.ShareContent": {
             "shareCommentary": {
-                "text": "Hello World! This is my first Share on LinkedIn!"
+                "text": text
             },
             "shareMediaCategory": "NONE"
         }
@@ -111,7 +116,6 @@ const LinkedingShare = async (token, idUser) => {
     Authorization: `Bearer ${token}`,
   }
 });
-console.log('LinkedingShare', response);
 
 }
 
